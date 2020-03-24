@@ -4,7 +4,9 @@ sudo -i
 #修改SSH配置文件
 vi /etc/ssh/sshd_config
 
-修改PermitRootLogin和PasswordAuthentication为yes
+#修改
+PermitRootLogin 为yes
+PasswordAuthentication 为yes
 
 #给root用户设置密码
 passwd root
