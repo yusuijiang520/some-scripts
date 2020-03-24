@@ -1,0 +1,33 @@
+#切换root账号
+sudo -i 
+
+#修改SSH配置文件
+vi /etc/ssh/sshd_config
+
+修改PermitRootLogin和PasswordAuthentication为yes
+
+#给root用户设置密码
+passwd root
+
+#重启SSH服务使修改生效
+systemctl restart sshd.service
+
+http://www.yusuijiang.ga
+
+yusuijiang
+
+#对接sspanelV3
+yum -y install wget &&
+
+wget -N --no-check-certificate https://raw.githubusercontent.com/lizhongnian/ss-panel-v3-mod-node-connect/master/ss-panel-v3-mod-node-connect.sh && 
+chmod +x ss-panel-v3-mod-node-connect.sh && 
+bash ss-panel-v3-mod-node-connect.sh
+
+#安装BBR加速
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod+x tcp.sh && ./tcp.sh
+
+
+#主题
+wget -N --no-check-certificate https://raw.githubusercontent.com/lizhongnian/sspanel-theme-homepage/master/install.sh &&
+chmod +x install.sh &&
+bash install.sh
