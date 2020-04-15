@@ -22,8 +22,7 @@ chmod +x ss-panel-v3-mod-node-connect.sh &&
 bash ss-panel-v3-mod-node-connect.sh
 
 #安装BBR加速
-wget -N --no-check-certificate "https://github.com/ylx2016/Linux-NetSpeed/releases/download/sh/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
 #主题
 wget -N --no-check-certificate https://raw.githubusercontent.com/lizhongnian/sspanel-theme-homepage/master/install.sh &&
