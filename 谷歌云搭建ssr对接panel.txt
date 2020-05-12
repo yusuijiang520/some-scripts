@@ -31,7 +31,42 @@ bash install.sh
 
 
 
+#报错：
+yum -y install wget
 
+mkdir /usr/src/kcpudp && cd /usr/src/kcpudp
+
+
+#服务端下载udp2raw
+
+wget https://github.com/atrandys/ssr/raw/master/src/udp2raw_amd64 && wget https://raw.githubusercontent.com/atrandys/ssr/master/src/run.sh && chmod +x udp2raw_amd64 run.sh
+
+#启用
+nohup ./run.sh ./udp2raw_amd64 -s -l0.0.0.0:8080 -r 127.0.0.1:9090 --raw-mode faketcp --cipher-mode none -a -k "atrandys" >udp2raw.log 2>&1 &
+
+#下载kcptun
+wget https://github.com/atrandys/ssr/raw/master/src/server_linux_amd64 && chmod +x server_linux_amd64
+
+#配置kcp
+cat > kcptun_server.json<<-EOF
+{
+"listen": ":9090",
+"target": "127.0.0.1:37212",
+"key": "atrandys",
+"crypt": "",
+"mode": "fast2",
+"mtu": 1200,
+"sndwnd": 1024,
+"rcvwnd": 512,
+"datashard": 5,
+"parityshard": 1,
+"dscp": 0,
+"nocomp": true
+}
+EOF
+
+#启用
+nohup ./server_linux_amd64 -c ./kcptun_server.json >kcptun.log 2>&1 &
 
 
 
