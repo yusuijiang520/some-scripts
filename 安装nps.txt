@@ -31,7 +31,7 @@ wget https://github.com/ehang-io/nps/releases/download/v0.26.8/linux_amd64_serve
 
 #编辑配置文件
 cd ~/workspace/src/github.com/cnlh/nps
-nano conf/nps.conf
+vi conf/nps.conf
 
 配置文件参数如下：
 
