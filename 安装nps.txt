@@ -1,0 +1,74 @@
+安装Go语言：
+
+#CentOS/RHEL系统
+yum -y install golang
+#创建目录并定义GOPATH环境变量指向该目录。
+mkdir ~/workspace
+echo 'export GOPATH="$HOME/workspace"' >> ~/.bashrc
+source ~/.bashrc
+
+安装git：
+
+#CentOS/RHEL系统
+yum -y install git
+
+安装源码：
+
+go get github.com/cnlh/nps
+
+编译服务端和客户端：
+
+#进入指定目录
+cd ~/workspace/src/github.com/cnlh/nps
+#编译服务端
+go build cmd/nps/nps.go
+#编译客户端
+go build cmd/npc/npc.go
+
+#下载并解压服务端
+
+wget https://github.com/ehang-io/nps/releases/download/v0.26.8/linux_amd64_server.tar.gz && tar zxvf linux_amd64_server.tar.gz
+
+#编辑配置文件
+cd ~/workspace/src/github.com/cnlh/nps
+nano conf/nps.conf
+
+配置文件参数如下：
+
+#web管理端口
+httpport
+#web界面管理密码
+password
+#服务端客户端通信端口
+bridePort
+#ssl certFile绝对路径
+pemPath
+#ssl keyFile绝对路径
+keyPath
+#域名代理https代理监听端口
+httpsProxyPort
+#域名代理http代理监听端口
+httpProxyPort
+#web api免验证IP地址
+authip
+#客户端与服务端连接方式kcp或tcp
+bridgeType
+
+然后启动服务端：
+
+
+./nps install
+./nps start
+
+#重启/停止服务端
+./nps stop|restart
+
+#如果打不开Web界面，就需要开启防火墙，一般CentOS系统出现情况最多
+#Centos 6系统
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+service iptables save
+service iptables restart
+
+#CentOS 7系统
+firewall-cmd --zone=public --add-port=8080/tcp --permanent 
+firewall-cmd --reload
