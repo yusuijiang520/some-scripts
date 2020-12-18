@@ -13,6 +13,7 @@ passwd root
 
 #重启SSH服务使修改生效
 systemctl restart sshd.service
+service sshd restart
 
 #对接sspanelV3
 yum -y install wget &&
