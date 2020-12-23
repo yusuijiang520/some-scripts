@@ -4,19 +4,22 @@ sudo -i
 #修改SSH配置文件
 vi /etc/ssh/sshd_config
 
-#修改
+#找到以下两个地方修改
 PermitRootLogin 为yes
 PasswordAuthentication 为yes
 
-#给root用户设置密码
+#给root用户重新设置密码设置密码
 passwd root
 
+#输入新密码没有提示，密码是隐藏的。
+#输入完密码之后，输入下面的代码重启ssh服务
 #重启SSH服务使修改生效
 systemctl restart sshd.service
 
 #安装BBR加速
 yum -y install wget && wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 
+#出提示选择2,回车,提示重启,点重启.到此为止,方可关闭ssh页面.打开FinalShell.
 
 
 
