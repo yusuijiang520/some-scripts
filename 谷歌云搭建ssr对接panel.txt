@@ -21,6 +21,8 @@ yum -y install wget && wget -N --no-check-certificate "https://raw.githubusercon
 
 #出提示选择2,回车,提示重启,点重启.到此为止,方可关闭ssh页面.打开FinalShell.
 
+#trojan文件配置路径
+/usr/local/etc/trojan/config.json
 
 #开启指定端口
 firewall-cmd --zone=public --add-port=8443/tcp --permanent
