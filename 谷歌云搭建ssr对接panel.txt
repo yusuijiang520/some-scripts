@@ -32,7 +32,7 @@ systemctl restart firewalld.service
 
 #卸载docker
 先查询下docker： yum list installed|grep docker ，
-然后执行卸载命令：yum -y remove  docker.x86_64   docker-client.x86_64  docker-common.x86_64
+然后执行卸载命令：yum -y remove  containerd.io.x86_64  docker-ce.x86_64  docker-ce-cli.x86_64  docker-ce-rootless-extras.x86_64  docker-scan-plugin.x86_64
 执行删除已存在的镜像和容器（以实际情况而定）： rm -rf  /var/lib/docker
 
 
