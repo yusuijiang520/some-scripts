@@ -30,8 +30,9 @@ firewall-cmd --zone=public --add-port=8443/udp --permanent
 #重启防火墙
 systemctl restart firewalld.service
 
-
-
+#卸载docker
+先查询下docker： yum list installed|grep docker ，
+然后执行卸载命令：yum -y remove  docker.x86_64   docker-client.x86_64  docker-common.x86_64
 
 
 
