@@ -40,7 +40,9 @@ rm -rf  /var/lib/docker
 
 
 
-
+#卸载宝塔面板
+wget http://download.bt.cn/install/bt-uninstall.sh
+sh bt-uninstall.sh
 
 
 
