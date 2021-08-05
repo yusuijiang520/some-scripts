@@ -24,6 +24,10 @@ yum -y install wget && wget -N --no-check-certificate "https://raw.githubusercon
 #trojan文件配置路径
 /usr/local/etc/trojan/config.json
 
+#查看端口占用情况
+netstat -lnp|grep 443
+#清除端口占用
+lsof -i :443|grep -v "PID"|awk '{print "kill -9",$2}'|sh
 #开启指定端口
 firewall-cmd --zone=public --add-port=8443/tcp --permanent
 firewall-cmd --zone=public --add-port=8443/udp --permanent
