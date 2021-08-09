@@ -33,6 +33,12 @@ firewall-cmd --zone=public --add-port=8443/tcp --permanent
 firewall-cmd --zone=public --add-port=8443/udp --permanent
 #重启防火墙
 systemctl restart firewalld.service
+#查看防火墙状态
+sudo systemctl status firewalld
+#开启防火墙
+sudo systemctl start firewalld
+#关闭防火墙
+sudo systemctl stop firewalld
 
 #卸载docker
 #先查询下docker： 
