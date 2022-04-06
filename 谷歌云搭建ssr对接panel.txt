@@ -60,7 +60,35 @@ sh bt-uninstall.sh
 
 
 
+php /www/wwwroot/www.lovenom.tk/xcat Job DailyJob
 
+php /www/wwwroot/www.lovenom.tk/xcat Job CheckJob
+
+php /www/wwwroot/www.lovenom.tk/xcat Job UserJob
+
+php /www/wwwroot/www.lovenom.tk/xcat Job SendMail
+
+php /www/wwwroot/www.lovenom.tk/xcat SendDiaryMail
+
+php /www/wwwroot/www.lovenom.tk/xcat DetectBan
+
+php /www/wwwroot/www.lovenom.tk/xcat DetectGFW
+
+php /www/wwwroot/www.lovenom.tk/xcat SyncRadius synclogin
+
+php /www/wwwroot/www.lovenom.tk/xcat SyncRadius syncvpn
+
+php /www/wwwroot/www.lovenom.tk/xcat SyncRadius syncnas
+
+php /www/wwwroot/www.lovenom.tk/xcat Backup full
+
+php /www/wwwroot/www.lovenom.tk/xcat Backup simple
+
+php /www/wwwroot/www.lovenom.tk/xcat FinanceMail day
+
+php /www/wwwroot/www.lovenom.tk/xcat FinanceMail week
+
+php /www/wwwroot/www.lovenom.tk/xcat FinanceMail month
 
 
 
