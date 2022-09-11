@@ -1,0 +1,198 @@
+void __fastcall MomaPatchManager_Kakao::compressResourceFile(MomaPatchManager_Kakao *this)
+{
+  char *v1; // x22
+  char *v2; // x23
+  unsigned __int64 v3; // x19
+  __int64 v4; // x28
+  __int64 v5; // x0
+  __int64 v6; // x28
+  __int64 v7; // x0
+  __int64 v8; // x8
+  _QWORD *v9; // x0
+  __int64 v10; // x8
+  __int64 v11; // x8
+  unsigned __int64 v12; // x28
+  __int64 v13; // x19
+  unsigned __int64 v14; // x2
+  unsigned __int8 *v15; // x1
+  _QWORD *v16; // x0
+  __int64 v17; // x8
+  __int64 v18; // x8
+  __int64 v19; // x8
+  char *v20; // x0
+  unsigned __int8 *v21; // x0
+  int (**v22)(pthread_t *, const pthread_attr_t *, void *(*)(void *), void *); // x9
+  unsigned int *v23; // x8
+  unsigned int v24; // off
+  unsigned __int64 v25; // [xsp+18h] [xbp-498h]
+  void *v26; // [xsp+20h] [xbp-490h]
+  unsigned __int8 *v27; // [xsp+28h] [xbp-488h]
+  unsigned __int64 v28; // [xsp+30h] [xbp-480h]
+  __int64 v29; // [xsp+38h] [xbp-478h]
+  unsigned __int64 v30; // [xsp+40h] [xbp-470h]
+  char *v31; // [xsp+48h] [xbp-468h]
+  __int64 v32; // [xsp+50h] [xbp-460h]
+  __int64 v33; // [xsp+58h] [xbp-458h]
+  __int64 v34; // [xsp+C0h] [xbp-3F0h]
+  __int64 v35; // [xsp+250h] [xbp-260h]
+  __int64 v36; // [xsp+260h] [xbp-250h]
+  __int64 v37; // [xsp+2C8h] [xbp-1E8h]
+  __int64 v38; // [xsp+350h] [xbp-160h]
+  __int64 v39; // [xsp+458h] [xbp-58h]
+
+  v39 = *(_QWORD *)(_ReadStatusReg(ARM64_SYSREG(3, 3, 13, 0, 2)) + 40);
+  v1 = (char *)this + 40;
+  v2 = (char *)*((_QWORD *)this + 5);
+  if ( v2 != (char *)this + 40 )
+  {
+    v25 = 2097165LL;
+    v3 = 0x100000LL;
+    v27 = (unsigned __int8 *)operator new[](0x100000uLL);
+    v26 = (void *)operator new[](0x20000DuLL);
+    v31 = &byte_4B347D8;
+    do
+    {
+      v4 = MomaPatchManager_Kakao::m_downloadPath;
+      v5 = strlen(MomaPatchManager_Kakao::m_downloadPath);
+      sub_2C23750(&v31, v4, v5);
+      v6 = *((_QWORD *)v2 + 2);
+      v7 = strlen(*((_QWORD *)v2 + 2));
+      sub_2C21D98(&v31, v6, v7);
+      sub_2C1A084(&v35, v31, 12LL);
+      if ( sub_2BD8E80(&v37) & 1 )
+      {
+        sub_2BDE468(&v35, 0LL, 2LL);
+        v30 = sub_2BDE1AC(&v35);
+        sub_2BDE468(&v35, 0LL, 0LL);
+        if ( v30 > 0x800 )
+        {
+          v29 = 0LL;
+          v9 = (_QWORD *)sub_2BDDB10(&v35, &v29, 4LL);
+          if ( *((_BYTE *)v9 + *(_QWORD *)(*v9 - 24LL) + 32) & 5 )
+          {
+            if ( !sub_2C18E10(&v36) )
+            {
+              v10 = *(unsigned int *)((char *)&v35 + *(_QWORD *)(v35 - 24) + 32);
+              sub_2BDA444();
+            }
+          }
+          else
+          {
+            sub_2BDE468(&v35, 0LL, 0LL);
+            if ( (unsigned __int8)v29 != 78 || BYTE1(v29) != 50 || BYTE2(v29) != 90 || BYTE3(v29) != 64 )
+            {
+              v12 = v30;
+              if ( v3 >= v30 )
+              {
+                v15 = v27;
+                v14 = v30;
+              }
+              else
+              {
+                if ( v27 )
+                {
+                  operator delete[](v27);
+                  v12 = v30;
+                }
+                v13 = operator new[](v12);
+                if ( v26 )
+                  operator delete[](v26);
+                v25 = 2 * v12 + 13;
+                v26 = (void *)operator new[](v25);
+                v14 = v30;
+                v15 = (unsigned __int8 *)v13;
+                v3 = v12;
+              }
+              v27 = v15;
+              v16 = (_QWORD *)sub_2BDDB10(&v35, v15, v14);
+              if ( *((_BYTE *)v16 + *(_QWORD *)(*v16 - 24LL) + 32) & 5 )
+              {
+                if ( !sub_2C18E10(&v36) )
+                {
+                  v17 = *(unsigned int *)((char *)&v35 + *(_QWORD *)(v35 - 24) + 32);
+                  sub_2BDA444();
+                }
+              }
+              else
+              {
+                if ( !sub_2C18E10(&v36) )
+                {
+                  v18 = *(unsigned int *)((char *)&v35 + *(_QWORD *)(v35 - 24) + 32);
+                  sub_2BDA444();
+                }
+                v28 = v25;
+                UtilCompress(40, (unsigned __int8 *)v26, &v28, v27, v30);
+                if ( v28 && v28 < v30 - 8 )
+                {
+                  sub_2C1A958(&v32, v31, 20LL);
+                  if ( sub_2BD8E80(&v34) & 1 )
+                  {
+                    sub_2BF9A90(&v32, "N2Z@", 4LL);
+                    sub_2BF9A90(&v32, &v30, 4LL);
+                    sub_2BF9A90(&v32, v26, v28);
+                    if ( !sub_2C18E10(&v33) )
+                    {
+                      v19 = *(unsigned int *)((char *)&v32 + *(_QWORD *)(v32 - 24) + 32);
+                      sub_2BDA444();
+                    }
+                  }
+                  sub_2C19174(&v32);
+                }
+              }
+            }
+            else if ( !sub_2C18E10(&v36) )
+            {
+              v11 = *(unsigned int *)((char *)&v35 + *(_QWORD *)(v35 - 24) + 32);
+              sub_2BDA444();
+            }
+          }
+        }
+        else if ( !sub_2C18E10(&v36) )
+        {
+          v8 = *(unsigned int *)((char *)&v35 + *(_QWORD *)(v35 - 24) + 32);
+          sub_2BDA444();
+        }
+      }
+      sub_2C1A4A0(&v35, &off_34E3E10);
+      sub_2BDBA0C(&v38);
+      v2 = *(char **)v2;
+    }
+    while ( v1 != v2 );
+    v20 = v31 - 24;
+    if ( v31 - 24 == (char *)&qword_4B347C0 )
+      goto LABEL_50;
+    v22 = &pthread_create;
+    v23 = (unsigned int *)(v31 - 8);
+    if ( &pthread_create )
+    {
+      do
+        v24 = __ldaxr((unsigned int *)&pthread_create);
+      while ( __stlxr((unsigned int)((char *)&pthread_create - 1), v23) );
+    }
+    else
+    {
+      LODWORD(v22) = (*v23)--;
+    }
+    if ( (signed int)v22 > 0 )
+    {
+LABEL_50:
+      v21 = v27;
+      if ( !v27 )
+        goto LABEL_38;
+    }
+    else
+    {
+      operator delete(v20);
+      v21 = v27;
+      if ( !v27 )
+      {
+LABEL_38:
+        if ( v26 )
+          operator delete[](v26);
+        return;
+      }
+    }
+    operator delete[](v21);
+    goto LABEL_38;
+  }
+}
