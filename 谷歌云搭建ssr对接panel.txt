@@ -22,6 +22,9 @@ yum -y install wget && wget -N --no-check-certificate "https://raw.githubusercon
 #安装/更新 一键安装Trojan
 source <(curl -sL https://git.io/trojan-install)
 
+#卸载
+source <(curl -sL https://git.io/trojan-install) --remove
+
 #出提示选择2,回车,提示重启,点重启.到此为止,方可关闭ssh页面.打开FinalShell.
 
 #trojan文件配置路径
