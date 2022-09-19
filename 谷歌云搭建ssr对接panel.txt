@@ -21,6 +21,8 @@ yum -y install wget && wget -N --no-check-certificate "https://raw.githubusercon
 
 #安装/更新 一键安装Trojan
 source <(curl -sL https://git.io/trojan-install)
+#如果遇到 mariadb启动中,请稍等....请直接重启vps
+reboot
 
 #卸载
 source <(curl -sL https://git.io/trojan-install) --remove
