@@ -32,13 +32,15 @@ source <(curl -sL https://git.io/trojan-install) --remove
 #trojan文件配置路径
 /usr/local/etc/trojan/config.json
 
+#安装firewalld 防火墙
+yum install firewalld
 #查看端口占用情况
 netstat -lnp|grep 443
 #清除端口占用
 lsof -i :443|grep -v "PID"|awk '{print "kill -9",$2}'|sh
 #开启指定端口
-firewall-cmd --zone=public --add-port=8443/tcp --permanent
-firewall-cmd --zone=public --add-port=8443/udp --permanent
+firewall-cmd --zone=public --add-port=22-8888/tcp --permanent
+firewall-cmd --zone=public --add-port=22-8888/udp --permanent
 #重启防火墙
 systemctl restart firewalld.service
 #查看防火墙状态
