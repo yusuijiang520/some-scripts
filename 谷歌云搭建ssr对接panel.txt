@@ -65,29 +65,34 @@ wget http://download.bt.cn/install/bt-uninstall.sh
 sh bt-uninstall.sh
 
 
-#hysteria2安装教程
+#端口限速###########测试可以正常限速########################################
+#限制速度
+#下面教程是限制为40Mbps，也就是5120KB/S
+#设置根
+tc qdisc add dev eth0 root handle 1: htb
+#设置允许的速度为5M，突发最大流量为5M，优先级为1
+tc class add dev eth0 parent 1: classid 1:5 htb rate 5Mbps ceil 5Mbps prio 1
+#设置防火墙id与规则id对应关系，id 1:5对应防火墙标记id为5
+tc filter add dev eth0 parent 1:0 protocol ip handle 5 fw flowid 1:5
 
-#一键安装脚本
+#配置防火墙
+#设置端口8443流量标记为5,应用流量限制规则到8443和80端口
+/sbin/iptables -A OUTPUT -t mangle -p tcp --sport 8443 -j MARK --set-mark 5
+/sbin/iptables -A OUTPUT -t mangle -p tcp --sport 80 -j MARK --set-mark 5
 
-wget -N --no-check-certificate https://raw.githubusercontent.com/flame1ce/hysteria2-install/main/hysteria2-install-main/hy2/hysteria.sh && bash hysteria.sh
+#####################################常用命令
+#清空规则
+tc qdisc del dev eth0 root
+tc -s qdisc ls dev eth0
 
-#添加私钥的读写权限
+#查看tc规则
+tc qdisc ls dev eth0
+tc -s qdisc ls dev eth0
+tc class ls dev eth0
+tc -s class ls dev eth0
 
-chmod +rw /root/private.key
-
-# Hysteria2相关命令
-#启动Hysteria2
-systemctl start hysteria-server.service
-#重启Hysteria2
-systemctl restart hysteria-server.service
-#查看Hysteria2状态
-systemctl status hysteria-server.service
-#停止Hysteria2
-systemctl stop hysteria-server.service
-#设置开机自启
-systemctl enable hysteria-server.service
-#查看日志
-journalctl -u hysteria-server.service
+#查看防火墙
+iptables -t mangle -n -v -L
 
 
 
