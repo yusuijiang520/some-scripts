@@ -95,6 +95,9 @@ tc -s class ls dev eth0
 iptables -t mangle -n -v -L
 
 
+#快速安装 (推荐) H-ui
+bash <(curl -fsSL https://raw.githubusercontent.com/jonssonyan/h-ui/main/install.sh)
+
 
 
 #安装机场加速
