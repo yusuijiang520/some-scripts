@@ -24,6 +24,14 @@ source <(curl -sL https://git.io/trojan-install)
 #如果遇到 mariadb启动中,请稍等....请直接重启vps
 reboot
 
+#不占用80端口
+
+修改/etc/systemd/system/trojan-web.service 配置文件
+在/usr/local/bin/trojan web 后面添加 -p 1080
+然后运行:
+systemctl daemon-reload
+systemctl restart trojan-web
+
 #卸载
 source <(curl -sL https://git.io/trojan-install) --remove
 
