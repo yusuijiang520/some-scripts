@@ -4,8 +4,9 @@ x-ui vless+cdn+ws+tls
 
 bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install.sh)
 
+#配置节点vless+ws+tls
 
-
+#开启CDN，规则添加tls，域名指向，端口12581，
 
 
 
