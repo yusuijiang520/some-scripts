@@ -1,3 +1,31 @@
+x-ui vless+cdn+ws+tls
+
+#x-ui一键安装脚本
+
+bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install.sh)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #切换root账号
 sudo -i 
 
