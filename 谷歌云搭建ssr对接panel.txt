@@ -9,24 +9,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install
 #开启CDN，规则添加tls，域名指向，端口12581，
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #切换root账号
 sudo -i 
 
