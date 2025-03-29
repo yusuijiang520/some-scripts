@@ -9,6 +9,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/yonggekkk/x-ui-yg/main/install
 #开启CDN，规则添加tls，域名指向，端口12581，
 
 
+非大厂服务器换源
+
+bash <(curl -sSL https://linuxmirrors.cn/main.sh)
+
 #切换root账号
 sudo -i 
 
